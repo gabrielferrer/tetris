@@ -5,7 +5,7 @@ BINDIR=bin
 OBJDIR=obj
 SRCBMP=..\common\bitmap\src
 DEPENDENCIES=
-OBJS="$(OBJ)\main.o" "$(OBJ)\os.o" "$(OBJ)\game.o" "$(OBJ)\render.o" "$(OBJ)\demo.o" "$(OBJ)\bitmap.o"
+OBJS="$(OBJDIR)\main.o" "$(OBJDIR)\os.o" "$(OBJDIR)\game.o" "$(OBJDIR)\render.o" "$(OBJDIR)\demo.o" "$(OBJDIR)\bitmap.o"
 CFLAGS=$(INCLUDE)
 
 ifdef DEBUG
@@ -18,22 +18,22 @@ tetris: main.o game.o render.o demo.o os.o bitmap.o
 	$(CC) $(LDFLAGS) $(OBJS) -o "$(BIN)\tetris.exe"
 
 main.o:
-	$(CC) $(CFLAGS) -c "$(SRCDIR)\win\main.c" -o "$(OBJ)\main.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\win\main.c" -o "$(OBJDIR)\main.o"
 
 os.o:
-	$(CC) $(CFLAGS) -c "$(SRCDIR)\win\os.c" -o "$(OBJ)\os.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\win\os.c" -o "$(OBJDIR)\os.o"
 
 game.o:
-	$(CC) $(CFLAGS) -c "$(SRCDIR)\game.c" -o "$(OBJ)\game.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\game.c" -o "$(OBJDIR)\game.o"
 
 render.o:
-	$(CC) $(CFLAGS) -c "$(SRCDIR)\render.c" -o "$(OBJ)\render.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\render.c" -o "$(OBJDIR)\render.o"
 
 demo.o:
-	$(CC) $(CFLAGS) -c "$(SRCDIR)\demo.c" -o "$(OBJ)\demo.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\demo.c" -o "$(OBJDIR)\demo.o"
 
 bitmap.o:
-	$(CC) $(CFLAGS) -c "$(SRCBMP)\bitmap.c" -o "$(OBJ)\bitmap.o"
+	$(CC) $(CFLAGS) -c "$(SRCBMP)\bitmap.c" -o "$(OBJDIR)\bitmap.o"
 
 clean:
-	del /F /Q "$(OBJ)\*.*" "$(BIN)\tetris.exe"
+	del /F /Q "$(OBJDIR)\*.*" "$(BIN)\tetris.exe"
