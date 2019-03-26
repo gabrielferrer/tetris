@@ -1,2 +1,5 @@
 # tetris
-Tetris game
+
+Another tetris game clone.
+
+It compiles for Linux, Windows and hopefully QNX.
