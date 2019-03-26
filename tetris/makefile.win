@@ -1,0 +1,39 @@
+CC=gcc
+INCLUDE=-Iinclude -I..\common\bitmap\include -I..\common\system\include
+SRCDIR=src
+BINDIR=bin
+OBJDIR=obj
+SRCBMP=..\common\bitmap\src
+DEPENDENCIES=
+OBJS="$(OBJ)\main.o" "$(OBJ)\os.o" "$(OBJ)\game.o" "$(OBJ)\render.o" "$(OBJ)\demo.o" "$(OBJ)\bitmap.o"
+CFLAGS=$(INCLUDE)
+
+ifdef DEBUG
+CFLAGS+=-g
+endif
+
+LDFLAGS=-mwindows
+
+tetris: main.o game.o render.o demo.o os.o bitmap.o
+	$(CC) $(LDFLAGS) $(OBJS) -o "$(BIN)\tetris.exe"
+
+main.o:
+	$(CC) $(CFLAGS) -c "$(SRCWIN)\main.c" -o "$(OBJ)\main.o"
+
+os.o:
+	$(CC) $(CFLAGS) -c "$(SRCWIN)\os.c" -o "$(OBJ)\os.o"
+
+game.o:
+	$(CC) $(CFLAGS) -c "$(SRC)\game.c" -o "$(OBJ)\game.o"
+
+render.o:
+	$(CC) $(CFLAGS) -c "$(SRC)\render.c" -o "$(OBJ)\render.o"
+
+demo.o:
+	$(CC) $(CFLAGS) -c "$(SRC)\demo.c" -o "$(OBJ)\demo.o"
+
+bitmap.o:
+	$(CC) $(CFLAGS) -fpack-struct -c "$(SRCBMP)\bitmap.c" -o "$(OBJ)\bitmap.o"
+
+clean:
+	del /F /Q "$(OBJ)\*.*" "$(BIN)\tetris.exe"

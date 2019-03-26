@@ -1,0 +1,46 @@
+CC=cc
+BIN=tetris
+INCLUDE=-Iinclude -I/usr/local/include/X11 -I/usr/include/X11 -I../common/bitmap/include
+SRCDIR=src
+BINDIR=bin
+OBJDIR=obj
+SRCBMP=../common/bitmap/src
+DEPENDENCIES=main.o os.o game.o render.o demo.o bitmap.o
+OBJS=$(OBJDIR)/main.o $(OBJDIR)/os.o $(OBJDIR)/game.o $(OBJDIR)/render.o $(OBJDIR)/demo.o \
+$(OBJDIR)/bitmap.o
+LDFLAGS=-L/usr/lib -lm -lX11
+CFLAGS=$(INCLUDE)
+
+# Pasar DEBUG a make para versión debug.
+ifdef DEBUG
+CFLAGS+=-g
+endif
+
+tetris: $(DEPENDENCIES)
+# IMPORTANTE: El lugar donde se encuentran los flags del linker (LDFLAGS) es
+# importante y debe ir despues de los objetos y despues del binario ya que
+# estos dependen de las librerias que pudiesen estar definidas en los flags.
+	$(CC) $(OBJS) -o $(BINDIR)/$(BIN) $(LDFLAGS)
+
+main.o:
+	$(CC) $(CFLAGS) -c $(SRCDIR)/lin/main.c -o $(OBJDIR)/main.o
+
+os.o:
+	$(CC) $(CFLAGS) -c $(SRCDIR)/lin/os.c -o $(OBJDIR)/os.o
+
+game.o:
+	$(CC) $(CFLAGS) -c $(SRCDIR)/game.c -o $(OBJDIR)/game.o
+
+render.o:
+	$(CC) $(CFLAGS) -c $(SRCDIR)/render.c -o $(OBJDIR)/render.o
+
+demo.o:
+	$(CC) $(CFLAGS) -c $(SRCDIR)/demo.c -o $(OBJDIR)/demo.o
+
+bitmap.o:
+	$(CC) $(CFLAGS) -c $(SRCBMP)/bitmap.c -o $(OBJDIR)/bitmap.o
+
+.PHONY: clean
+clean:
+	rm $(OBJDIR)/*.o $(BINDIR)/$(BIN)
+

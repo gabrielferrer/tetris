@@ -1,0 +1,31 @@
+SRC=src
+BIN=bin
+OBJ=obj
+INC=include
+INCBMP=../common/bitmap/include
+SRCBMP=../common/bitmap/src
+OBJS=$(OBJ)/main_lin.o $(OBJ)/game.o $(OBJ)/render.o $(OBJ)/demo.o $(OBJ)/bitmap.o
+CC=cc
+CFLAGS=-I$(INC) -I$(INCBMP)
+
+ifdef DEBUG
+CFLAGS=-g $(CFLAGS)
+endif
+
+LDFLAGS=-lph
+
+tetris: main_qnx.o game.o render.o demo.o bitmap.o
+	$(CC) $(LDFLAGS) $(OBJS) -o $(BIN)/tetris
+
+main_qnx.o:
+	$(CC) $(CFLAGS) -c $(SRC)/main_qnx.c -o $(OBJ)/main_qnx.o
+
+game.o:
+	$(CC) $(CFLAGS) -c $(SRC)/game.c -o $(OBJ)/game.o
+
+render.o:
+	$(CC) $(CFLAGS) -c $(SRC)/render.c -o $(OBJ)/render.o
+
+bitmap.o:
+	$(CC) $(CFLAGS) -fpack-struct -c $(SRCBMP)/bitmap.c -o $(OBJ)/bitmap.o
+
