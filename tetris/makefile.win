@@ -33,7 +33,7 @@ demo.o:
 	$(CC) $(CFLAGS) -c "$(SRCDIR)\demo.c" -o "$(OBJ)\demo.o"
 
 bitmap.o:
-	$(CC) $(CFLAGS) -fpack-struct -c "$(SRCBMP)\bitmap.c" -o "$(OBJ)\bitmap.o"
+	$(CC) $(CFLAGS) -c "$(SRCBMP)\bitmap.c" -o "$(OBJ)\bitmap.o"
 
 clean:
 	del /F /Q "$(OBJ)\*.*" "$(BIN)\tetris.exe"
