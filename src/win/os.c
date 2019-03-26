@@ -81,7 +81,7 @@ void OS_Sleep (long milisecs) {
 
 #define BUFFER_SIZE 1024
 void OS_Exit (char* function, char* failfunction) {
-	WCHAR buffer[BUFFER_SIZE];
+	char buffer[BUFFER_SIZE];
 
 	FormatMessage (
 		FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
