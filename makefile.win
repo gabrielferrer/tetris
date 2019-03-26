@@ -15,7 +15,7 @@ endif
 LDFLAGS=-mwindows
 
 tetris: main.o game.o render.o demo.o os.o bitmap.o
-	$(CC) $(LDFLAGS) $(OBJS) -o "$(BIN)\tetris.exe"
+	$(CC) $(LDFLAGS) $(OBJS) -o "$(BINDIR)\tetris.exe"
 
 main.o:
 	$(CC) $(CFLAGS) -c "$(SRCDIR)\win\main.c" -o "$(OBJDIR)\main.o"
@@ -36,4 +36,4 @@ bitmap.o:
 	$(CC) $(CFLAGS) -c "$(SRCBMP)\bitmap.c" -o "$(OBJDIR)\bitmap.o"
 
 clean:
-	del /F /Q "$(OBJDIR)\*.*" "$(BIN)\tetris.exe"
+	del /F /Q "$(OBJDIR)\*.*" "$(BINDIR)\tetris.exe"
