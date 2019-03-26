@@ -92,7 +92,7 @@ void OS_Exit (char* function, char* failfunction) {
 		BUFFER_SIZE,
 		NULL);
 
-	wprintf ("%s(): %s() failed. '%s'", function, failfunction, buffer);
+	wsprintf ("%s(): %s() failed. '%s'", function, failfunction, buffer);
 	exit (EXIT_FAILURE);
 }
 
@@ -166,9 +166,6 @@ void OS_Init (HINSTANCE hInst) {
 
 	memset (Scene, 0, WINDOW_WIDTH * WINDOW_HEIGHT * BYTES_PER_PIXEL);
 	ReleaseDC (Hwnd, hdc);
-	R_Init ();
-	GM_Init (S_DEMO);
-	//GM_Init (S_PLAYING);
 }
 
 void OS_Render() {
