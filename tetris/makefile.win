@@ -18,19 +18,19 @@ tetris: main.o game.o render.o demo.o os.o bitmap.o
 	$(CC) $(LDFLAGS) $(OBJS) -o "$(BIN)\tetris.exe"
 
 main.o:
-	$(CC) $(CFLAGS) -c "$(SRCWIN)\main.c" -o "$(OBJ)\main.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\win\main.c" -o "$(OBJ)\main.o"
 
 os.o:
-	$(CC) $(CFLAGS) -c "$(SRCWIN)\os.c" -o "$(OBJ)\os.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\win\os.c" -o "$(OBJ)\os.o"
 
 game.o:
-	$(CC) $(CFLAGS) -c "$(SRC)\game.c" -o "$(OBJ)\game.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\game.c" -o "$(OBJ)\game.o"
 
 render.o:
-	$(CC) $(CFLAGS) -c "$(SRC)\render.c" -o "$(OBJ)\render.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\render.c" -o "$(OBJ)\render.o"
 
 demo.o:
-	$(CC) $(CFLAGS) -c "$(SRC)\demo.c" -o "$(OBJ)\demo.o"
+	$(CC) $(CFLAGS) -c "$(SRCDIR)\demo.c" -o "$(OBJ)\demo.o"
 
 bitmap.o:
 	$(CC) $(CFLAGS) -fpack-struct -c "$(SRCBMP)\bitmap.c" -o "$(OBJ)\bitmap.o"
