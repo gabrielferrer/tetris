@@ -149,7 +149,7 @@ void OS_Init (HINSTANCE hInst) {
 
 	BI->bmiHeader.biSize = sizeof (BITMAPINFOHEADER);
 	BI->bmiHeader.biWidth = WINDOW_WIDTH;
-	BI->bmiHeader.biHeight = WINDOW_HEIGHT;
+	BI->bmiHeader.biHeight = -WINDOW_HEIGHT;
 	BI->bmiHeader.biPlanes = 1;
 	BI->bmiHeader.biBitCount = BYTES_PER_PIXEL * 8;
 	BI->bmiHeader.biCompression = BI_RGB;
